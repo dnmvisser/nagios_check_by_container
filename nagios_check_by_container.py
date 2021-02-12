@@ -2,6 +2,7 @@
 # Wrapper script to run a service check from a Docker container
 import argparse
 import sys
+import os
 import re
 import docker
 from pprint import pprint
@@ -35,7 +36,7 @@ try:
 
     image = args.image
     command = args.command
-    env_file = args.env_file
+    env_file = os.path.abspath(os.path.expanduser(args.env_file))
     warn_at = args.warning
 
 
